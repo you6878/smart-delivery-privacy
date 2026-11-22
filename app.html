@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스마트 딜리버리 앱 받기</title>
+<meta property="og:title" content="스마트 딜리버리 앱 받기">
+<meta property="og:description" content="배송기사용 배송 사진 촬영·매장 정리 앱 — 아이폰은 App Store, 안드로이드는 Play 스토어로 바로 연결돼요.">
+<style>
+  :root{--p:#2B5FD9;--ink:#17191C;--g:#5A6069;--b:#E3E6EA}
+  *{box-sizing:border-box}
+  body{margin:0;background:#F7F8F9;color:var(--ink);font-family:Pretendard,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.6;font-size:17px}
+  .wrap{max-width:480px;margin:0 auto;padding:48px 18px}
+  h1{font-size:26px;margin:0 0 6px;text-align:center}
+  .sub{color:var(--g);margin:0 0 28px;text-align:center}
+  .btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:19px;padding:17px;border-radius:16px;margin:0 0 12px}
+  .ios{background:#17191C;color:#fff}
+  .and{background:var(--p);color:#fff}
+  .small{font-size:14px;color:var(--g);text-align:center;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>스마트 딜리버리</h1>
+  <p class="sub" id="msg">휴대폰에 맞는 스토어를 골라 주세요</p>
+  <a class="btn ios" id="ios" href="https://apps.apple.com/kr/app/id6804838769">아이폰 · App Store에서 받기</a>
+  <a class="btn and" id="and" href="https://play.google.com/store/apps/details?id=com.exlou.smart_delivery">안드로이드 · Play 스토어에서 받기</a>
+  <p class="small">설치 후 휴대폰 번호로 로그인하면 친구가 공유한 배송 사진과 회차 정보를 볼 수 있어요.</p>
+  <p class="small">문의: exlou1989@gmail.com · <a href="./">개인정보처리방침</a></p>
+</div>
+<script>
+(function () {
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS
+  var isAndroid = /Android/i.test(ua);
+  if (!isIOS && !isAndroid) return; // PC 등은 두 버튼을 그대로 보여 줌
+  document.getElementById('msg').textContent = '스토어로 이동하는 중…';
+  document.getElementById(isIOS ? 'and' : 'ios').style.display = 'none';
+  location.replace(document.getElementById(isIOS ? 'ios' : 'and').href);
+})();
+</script>
+</body>
+</html>
